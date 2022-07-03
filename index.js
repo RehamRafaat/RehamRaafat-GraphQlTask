@@ -1,9 +1,14 @@
 const { ApolloServer, gql } = require('apollo-server');
 const typeDefs = gql`
+  type comment {
+    name: String
+    comment: String
+  }
   type Post {
     id: ID
     title:String
     text: String
+    comments: [comment]
   }
   type Query {
     Posts: [Post]
@@ -23,16 +28,19 @@ const Posts = [
         id: 1,
         title:'First GraphQl',
         text: 'GraphQL provides a more flexible and alternative approach for data-intensive operations in the API Management domain. This will be beneficial for querying and retrieving data in optimized forms. With this approach, it is possible to make applications more efficient.',
+        comments: [{ name: "Reham", comment: "brillient !" },{ name: "Amir", comment: "Fantastic" }],
     },
     {
         id: 2,
         title:'Harry Potter',
         text: 'The boy who lived, the choosen one who was the only one who have the ability to kill the dark lord voldmort',
+        comments: [{ name: "Ron", comment: "I adore this series!" }],
     },
     {
         id: 3,
         title:'Mickey Mouse',
         text: 'Tiny mouse which all children love !',
+        comments: [{ name: "Reham", comment: "at which channel movie will come?" },{ name: "Mohra", comment: "it comes on MBC3 at 9:00 pm" },{ name: "Nour", comment: "My best Movie" }],
     },
 ];
   
